@@ -2,10 +2,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% block style%}
     {% include 'style_code.html' %}
-  </head>
+    {% endblock style%}
+</head>
 
 <body>
+    {% block navbar %}
     {% include 'top_navbar.html' %} 
+    {% endblock navbar %}
+    
+
+    <div class = "container">
+        <div class="row">
+            {% block maincontent %}
+                
+            {% endblock maincontent %}
+        </div>
+    </div>
+    
 </body>
 </html>
