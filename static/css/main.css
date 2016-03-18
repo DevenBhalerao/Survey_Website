@@ -214,6 +214,13 @@ h5 {
 	color: #fff;
 }
 
+.top5 { padding-top:5px; }
+.top7 { padding-top:7px; }
+.top10 { padding-top:10px; }
+.top15 { padding-top-top:15px; }
+.top17 { padding-top:17px; }
+.top30 { padding-top:30px; }
+
 
 .half-unit bold{
 	font-family: 'Open Sans', sans-serif;
