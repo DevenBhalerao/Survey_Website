@@ -675,6 +675,14 @@ ul#jstwitter li a{
   padding-right: 2px;
 }
 
+.col-centered{
+	width : 35%;
+    float: none;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+
 /*
  * Note: using adjacent or general sibling selectors combined with
  *       pseudo classes doesn't work in Safari 5.0 and Chrome 12.

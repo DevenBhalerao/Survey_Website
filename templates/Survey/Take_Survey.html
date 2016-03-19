@@ -3,18 +3,27 @@
 
 
 {% block maincontent%}
-	<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
+<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
 	&nbsp;
 	&nbsp;
 	&nbsp;
 	&nbsp;
-	
-	</div>
-	<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
+</div>
+
+
+{% for question in questions %}
+<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
 	<div class="dash-unit top10">
-	{{questions}}
-	{{choices}}
+		<div class="text-center col-md-4 col-md-offset-4">
+			{{ question.question_text }}
+		</div>
+		{% for choice in choices %}
+		{% if choice.question == question %}
+		{{ choice.choice_text }}
+		{% endif %}
+		{% endfor %}
 	</div>
-	</div>
-	
+</div>
+{% endfor %}
+
 {% endblock %}
