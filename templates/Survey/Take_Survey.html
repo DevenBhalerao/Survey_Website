@@ -14,14 +14,20 @@
 {% for question in questions %}
 <div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
 	<div class="dash-unit top10">
-		<div class="text-center col-md-4 col-md-offset-4">
-			{{ question.question_text }}
+		<div class=" col-md-11 col-md-offset-1 pull-left">
+			<p class="lead">
+				{{ question.question_text }}
+			</p>
 		</div>
+		
 		{% for choice in choices %}
-		{% if choice.question == question %}
-		{{ choice.choice_text }}
-		{% endif %}
+		<div class=" col-md-11 col-md-offset-1">
+			{% if choice.question == question %}
+			{{ choice.choice_text }}
+			{% endif %}
+		</div>
 		{% endfor %}
+		
 	</div>
 </div>
 {% endfor %}
