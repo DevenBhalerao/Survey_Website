@@ -10,26 +10,30 @@
 	&nbsp;
 </div>
 
-
-{% for question in questions %}
-<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
-	<div class="dash-unit top10">
-		<div class=" col-md-11 col-md-offset-1 pull-left">
-			<p class="lead">
-				{{ question.question_text }}
-			</p>
+<form method="POST" action="{% url 'vote' %}">
+	{% csrf_token %}
+	{% for question in questions %}
+	<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10">
+		<div class="dash-unit top10">
+			<div class=" col-md-11 col-md-offset-1 pull-left">
+				<p class="lead">
+					{{ question.question_text }}
+				</p>
+			</div>
+			<div class=" col-md-11 col-md-offset-1">
+				{% for choice in question.choice_set.all %}
+				<input type="radio" name="choice{{ forloop.parentloop.counter }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+				<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+				{% endfor %}
+			</div>
 		</div>
-		
-		{% for choice in choices %}
-		<div class=" col-md-11 col-md-offset-1">
-			{% if choice.question == question %}
-			{{ choice.choice_text }}
-			{% endif %}
-		</div>
-		{% endfor %}
-		
 	</div>
-</div>
-{% endfor %}
+	{% endfor %}
+
+	
+	<div class="col-sm-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 top10"> 
+		<input type="submit" value="Vote" />
+	</div>
+</form>
 
 {% endblock %}
