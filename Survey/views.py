@@ -20,10 +20,18 @@ def survey(request):
 
 def vote(request):
 	print request.POST
+	user_choice_list = list()
+	choice_objects = list()
+	default_choices = Choice.objects.all()
 	for x in range(1, len(Question.objects.all())+1):
 	    choice = "choice"+str(x)
-	    print request.POST.get(choice)
+	    choice_objects.append(Choice.objects.get(pk=request.POST[choice]))
+	print choice_objects
+	for choice in choice_objects:
+		choice.votes += 1
+		choice.save()
 	context = {
-		
+	    "Question" : Question.objects.all(),
+		"Choices" : Choice.objects.all()
 	}
 	return render(request, "results.html", context)	

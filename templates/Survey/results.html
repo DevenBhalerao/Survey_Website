@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+
+
+{% block maincontent%}
+
+lol
+{% for question in Question %}
+
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock maincontent %}
